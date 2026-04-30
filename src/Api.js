@@ -1,6 +1,7 @@
 // FILE: services/api.js
 
 const BASE_URL = "http://localhost:5000/api";
+const BASE = process.env.REACT_APP_API_URL || "";
 
 export const fetchRecommendations = async (filters = {}) => {
   // Build query string from filters if any are passed

@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 
 export default function Navbar({
-  handleTabClick = () => {},
-  activeTab = "destinations",
-  search = "",
-  setSearch = () => {},
+  handleTabClick,
+  activeTab,
+  search,
+  setSearch,
 }) {
   const [scrolled, setScrolled] = useState(false);
 
+  // Add shadow to navbar when user scrolls down
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
@@ -17,7 +18,7 @@ export default function Navbar({
 
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
-      {/* LOGO */}
+      {/* Logo */}
       <div
         className="navbar-logo"
         onClick={() => handleTabClick("destinations")}
@@ -29,7 +30,7 @@ export default function Navbar({
 
       {/* RIGHT SIDE */}
       <div className="navbar-right">
-        {/* SEARCH */}
+        {/* SEARCH BAR (NEW) */}
         <input
           type="text"
           placeholder="Search destinations..."
@@ -38,7 +39,7 @@ export default function Navbar({
           className="navbar-search"
         />
 
-        {/* LINKS */}
+        {/* Links */}
         <ul className="navbar-links">
           <li>
             <a

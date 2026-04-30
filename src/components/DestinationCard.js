@@ -1,3 +1,5 @@
+// FILE: components/DestinationCard.js
+
 import React, { useState, useRef } from "react";
 import "./DestinationCard.css";
 
@@ -12,11 +14,7 @@ export default function DestinationCard({ dest, isFav, onToggleFav }) {
 
   const cardRef = useRef(null);
 
-  // ✅ SAFE OBJECT (prevents undefined crash)
-  const safeDest = dest || {};
-
-  // ✅ SAFE IMAGE HANDLING
-  const imgSrc = imgErr || !safeDest.imageUrl ? FALLBACK : safeDest.imageUrl;
+  const imgSrc = imgErr || !dest.imageUrl ? FALLBACK : dest.imageUrl;
 
   // ── 3D TILT EFFECT ──
   const handleMouseMove = (e) => {
@@ -62,7 +60,7 @@ export default function DestinationCard({ dest, isFav, onToggleFav }) {
     try {
       const geo = await fetch(
         `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
-          safeDest.country || "",
+          dest.country,
         )}&count=1`,
       ).then((r) => r.json());
 
@@ -87,7 +85,7 @@ export default function DestinationCard({ dest, isFav, onToggleFav }) {
       };
 
       setWeather({ temp, icon: getIcon(code) });
-    } catch (err) {
+    } catch {
       setWeather({ temp: "N/A", icon: "🌍" });
     } finally {
       setWeatherLoad(false);
@@ -97,8 +95,7 @@ export default function DestinationCard({ dest, isFav, onToggleFav }) {
   // ── MAP ──
   const openMap = (e) => {
     e.stopPropagation();
-
-    const query = `${safeDest.name || ""}, ${safeDest.country || ""}`;
+    const query = `${dest.name}, ${dest.country}`;
 
     window.open(
       `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
@@ -119,19 +116,10 @@ export default function DestinationCard({ dest, isFav, onToggleFav }) {
       >
         {/* IMAGE */}
         <div className="card-img-wrap">
-          <img
-            src={imgSrc}
-            alt={safeDest.name || "destination"}
-            onError={() => setImgErr(true)}
-          />
+          <img src={imgSrc} alt={dest.name} onError={() => setImgErr(true)} />
 
-          <div className="card-badge">
-            {safeDest.travelVibe || safeDest.travelType || "Explore"}
-          </div>
-
-          <div className="card-cost-badge">
-            {safeDest.estimatedCost || "N/A"}
-          </div>
+          <div className="card-badge">{dest.travelVibe || dest.travelType}</div>
+          <div className="card-cost-badge">{dest.estimatedCost}</div>
 
           {/* WEATHER */}
           <button
@@ -157,7 +145,7 @@ export default function DestinationCard({ dest, isFav, onToggleFav }) {
             className={`fav-btn ${isFav ? "saved" : ""}`}
             onClick={(e) => {
               e.stopPropagation();
-              onToggleFav && onToggleFav(safeDest);
+              onToggleFav && onToggleFav(dest);
             }}
           >
             {isFav ? "❤️" : "🤍"}
@@ -166,25 +154,19 @@ export default function DestinationCard({ dest, isFav, onToggleFav }) {
 
         {/* BODY */}
         <div className="card-body">
-          <div className="card-country">📍 {safeDest.country || "Unknown"}</div>
-
-          <div className="card-name">{safeDest.name || "Untitled"}</div>
-
-          <div className="card-desc">
-            {safeDest.description || "No description available"}
-          </div>
+          <div className="card-country">📍 {dest.country}</div>
+          <div className="card-name">{dest.name}</div>
+          <div className="card-desc">{dest.description}</div>
 
           <div className="card-pills">
-            <span className="pill">🌤 {safeDest.bestSeason || "N/A"}</span>
-            <span className="pill">⏱ {safeDest.idealDuration || "N/A"}</span>
+            <span className="pill">🌤 {dest.bestSeason}</span>
+            <span className="pill">⏱ {dest.idealDuration}</span>
           </div>
 
           <div className="card-footer">
             <div className="card-cost">
               <div className="cost-label">Est. Cost</div>
-              <div className="cost-value">
-                {safeDest.estimatedCost || "N/A"}
-              </div>
+              <div className="cost-value">{dest.estimatedCost}</div>
             </div>
 
             <button className="btn-details" onClick={() => setModal(true)}>
@@ -194,73 +176,71 @@ export default function DestinationCard({ dest, isFav, onToggleFav }) {
         </div>
       </div>
 
-      {/* ── MODAL ── */}
+      {/* ── MODAL (ENHANCED VERSION) ── */}
       {modal && (
         <div
           className="modal-overlay"
           onClick={(e) => e.target === e.currentTarget && setModal(false)}
         >
           <div className="modal">
+            {/* IMAGE HEADER */}
             <div className="modal-img-wrap">
-              <img src={imgSrc} alt={safeDest.name || "destination"} />
+              <img src={imgSrc} alt={dest.name} />
 
               <button className="modal-close" onClick={() => setModal(false)}>
                 ✕
               </button>
             </div>
 
+            {/* CONTENT */}
             <div className="modal-body">
               <p className="modal-country">
-                📍 {safeDest.country || "Unknown"}
+                📍 {dest.country} {dest.region ? `· ${dest.region}` : ""}
               </p>
 
-              <h2 className="modal-name">{safeDest.name || "Untitled"}</h2>
+              <h2 className="modal-name">{dest.name}</h2>
+              <p className="modal-desc">{dest.description}</p>
 
-              <p className="modal-desc">
-                {safeDest.description || "No description available"}
-              </p>
-
-              {/* DETAILS */}
+              {/* DETAILS GRID */}
               <div className="modal-grid">
                 <div className="modal-detail">
-                  <span>Estimated Cost</span>
-                  <span>{safeDest.estimatedCost || "N/A"}</span>
+                  <span className="detail-label">Estimated Cost</span>
+                  <span className="detail-value">{dest.estimatedCost}</span>
                 </div>
 
                 <div className="modal-detail">
-                  <span>Best Season</span>
-                  <span>{safeDest.bestSeason || "N/A"}</span>
+                  <span className="detail-label">Best Season</span>
+                  <span className="detail-value">{dest.bestSeason}</span>
                 </div>
 
                 <div className="modal-detail">
-                  <span>Duration</span>
-                  <span>{safeDest.idealDuration || "N/A"}</span>
+                  <span className="detail-label">Duration</span>
+                  <span className="detail-value">{dest.idealDuration}</span>
                 </div>
 
                 <div className="modal-detail">
-                  <span>Travel Style</span>
-                  <span>{safeDest.travelVibe || "N/A"}</span>
+                  <span className="detail-label">Travel Style</span>
+                  <span className="detail-value">{dest.travelVibe}</span>
                 </div>
               </div>
 
-              {/* HIGHLIGHTS SAFE */}
-              {Array.isArray(safeDest.highlights) &&
-                safeDest.highlights.length > 0 && (
-                  <div className="modal-highlights">
-                    <p>Top Highlights</p>
-                    <ul>
-                      {safeDest.highlights.map((h, i) => (
-                        <li key={i}>→ {h}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+              {/* HIGHLIGHTS */}
+              {dest.highlights?.length > 0 && (
+                <div className="modal-highlights">
+                  <p className="highlights-title">Top Highlights</p>
+                  <ul className="highlights-list">
+                    {dest.highlights.map((h, i) => (
+                      <li key={i}>→ {h}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               {/* INSIDER TIP */}
-              {safeDest.insiderTip && (
+              {dest.insiderTip && (
                 <div className="modal-tip">
-                  <p>✦ Insider Tip</p>
-                  <p>{safeDest.insiderTip}</p>
+                  <p className="tip-title">✦ Insider Tip</p>
+                  <p className="tip-text">{dest.insiderTip}</p>
                 </div>
               )}
             </div>
