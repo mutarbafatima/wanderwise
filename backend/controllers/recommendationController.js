@@ -1,5 +1,6 @@
-// api.js — Hardcoded data (no backend needed for Vercel)
+// FILE: controllers/recommendationController.js
 
+// ── SAMPLE TRAVEL DATA ──
 const destinations = [
   {
     id: 1,
@@ -39,7 +40,7 @@ const destinations = [
       "Lempuyang Temple",
       "Sidemen Valley",
       "Kelingking Beach",
-      "Angel's Billabong",
+      "Angel’s Billabong",
       "Broken Beach",
       "Padang Padang Beach",
       "Green Bowl Beach",
@@ -489,7 +490,7 @@ const destinations = [
       "Wildlife spotting",
       "Glacier Skywalk",
       "Mistaya Canyon",
-      "Lake O'Hara",
+      "Lake O’Hara",
       "Sherbrooke Lake",
       "Mount Rundle",
       "Cave and Basin",
@@ -548,7 +549,7 @@ const destinations = [
       "Cuckoo's Den",
     ],
     imageUrl:
-      "https://images.unsplash.com/photo-1603491656337-3b491147917c?w=600&auto=format&fit=crop&q=60",
+      "https://images.unsplash.com/photo-1603491656337-3b491147917c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGFob3JlfGVufDB8fDB8fHww",
   },
   {
     id: 12,
@@ -849,7 +850,7 @@ const destinations = [
       "Perform Tawaf (circling the Kaaba) in the early hours of the morning between 2am and 5am when the crowds are at their lightest.",
     highlights: ["Masjid al-Haram", "Mount Arafat", "Zamzam Well"],
     imageUrl:
-      "https://images.unsplash.com/photo-1513072064285-240f87fa81e8?w=600&auto=format&fit=crop&q=60",
+      "https://images.unsplash.com/photo-1513072064285-240f87fa81e8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bWFra2FofGVufDB8fDB8fHwws",
   },
   {
     id: 27,
@@ -887,7 +888,7 @@ const destinations = [
       "Take the Glacier Express train from Zermatt to St. Moritz — it is one of the world's most scenic rail journeys and worth every franc.",
     highlights: ["Matterhorn", "Jungfraujoch", "Glacier Express Train"],
     imageUrl:
-      "https://images.unsplash.com/photo-1527095655060-4026c4af2b25?w=600&auto=format&fit=crop&q=60",
+      "https://images.unsplash.com/photo-1527095655060-4026c4af2b25?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHN3aXR6ZXJsYW5kfGVufDB8fDB8fHww",
   },
   {
     id: 29,
@@ -990,7 +991,7 @@ const destinations = [
       "Underground Cities",
     ],
     imageUrl:
-      "https://images.unsplash.com/photo-1695415683093-ae5f213ea898?w=600&auto=format&fit=crop&q=60",
+      "https://images.unsplash.com/photo-1695415683093-ae5f213ea898?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2FwYWRvY2lhfGVufDB8fDB8fHww",
   },
   {
     id: 34,
@@ -1066,7 +1067,7 @@ const destinations = [
       "The daily tourist fee of $200 includes accommodation, meals, and guide — it is actually great value once you understand what is included.",
     highlights: ["Tiger's Nest Monastery", "Punakha Dzong", "Dochula Pass"],
     imageUrl:
-      "https://plus.unsplash.com/premium_photo-1661952578770-79010299a9f9?w=600&auto=format&fit=crop&q=60",
+      "https://plus.unsplash.com/premium_photo-1661952578770-79010299a9f9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Ymh1dGFufGVufDB8fDB8fHww",
   },
   {
     id: 38,
@@ -1131,7 +1132,7 @@ const destinations = [
       "Darwin Research Station",
     ],
     imageUrl:
-      "https://images.unsplash.com/photo-1610226977124-9fd2755d09f2?w=600&auto=format&fit=crop&q=60",
+      "https://images.unsplash.com/photo-1610226977124-9fd2755d09f2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZWN1YWRvcnxlbnwwfHwwfHx8MA%3D%3D",
   },
   {
     id: 41,
@@ -1196,7 +1197,7 @@ const destinations = [
       "Visit Al-Masjid an-Nabawi after Fajr prayer at dawn — the atmosphere at sunrise is deeply peaceful and the crowds are much lighter.",
     highlights: ["Al-Masjid an-Nabawi", "Quba Mosque", "Al-Baqi Cemetery"],
     imageUrl:
-      "https://images.unsplash.com/photo-1572358899655-f63ece97bfa5?w=600&auto=format&fit=crop&q=60",
+      "https://images.unsplash.com/photo-1572358899655-f63ece97bfa5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVkaW5hfGVufDB8fDB8fHww",
   },
   {
     id: 44,
@@ -1242,7 +1243,7 @@ const destinations = [
       "Khan el-Khalili Bazaar",
     ],
     imageUrl:
-      "https://images.unsplash.com/photo-1587975844577-56dfe5d3fca8?w=600&auto=format&fit=crop&q=60",
+      "https://images.unsplash.com/photo-1587975844577-56dfe5d3fca8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZWd5cHR8ZW58MHx8MHx8fDA%3D",
   },
   {
     id: 46,
@@ -1299,7 +1300,7 @@ const destinations = [
       "Drive the Musandam Peninsula for a day — the fjord-like coastline is one of the most dramatic and least visited landscapes in the entire Middle East.",
     highlights: ["Sultan Qaboos Grand Mosque", "Mutrah Souq", "Wadi Shab"],
     imageUrl:
-      "https://images.unsplash.com/photo-1599743777555-e362a2feab39?w=600&auto=format&fit=crop&q=60",
+      "https://images.unsplash.com/photo-1599743777555-e362a2feab39?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8b21hbnxlbnwwfHwwfHx8MA%3D%3D",
   },
   {
     id: 49,
@@ -1322,7 +1323,7 @@ const destinations = [
       "San Telmo Market",
     ],
     imageUrl:
-      "https://plus.unsplash.com/premium_photo-1697729979889-31ec7ecf6f06?w=600&auto=format&fit=crop&q=60",
+      "https://plus.unsplash.com/premium_photo-1697729979889-31ec7ecf6f06?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXJnZW50aW5hfGVufDB8fDB8fHww",
   },
   {
     id: 50,
@@ -1425,7 +1426,7 @@ const destinations = [
       "Stay inside the walled city in a boutique hotel — the experience of waking up to those colorful streets and sounds is completely different from staying outside the walls.",
     highlights: ["Walled Old City", "Rosario Islands", "Castle San Felipe"],
     imageUrl:
-      "https://plus.unsplash.com/premium_photo-1697730015412-75b8223ae1fc?w=600&auto=format&fit=crop&q=60",
+      "https://plus.unsplash.com/premium_photo-1697730015412-75b8223ae1fc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y29sb21iaWF8ZW58MHx8MHx8fDA%3D",
   },
   {
     id: 55,
@@ -1593,7 +1594,7 @@ const destinations = [
       "Visit Nike Art Gallery in Lekki — it is the largest art gallery in West Africa and the owner Nike Davies-Okundaye is often there to share the stories behind the works.",
     highlights: ["Tarkwa Bay Beach", "Nike Art Gallery", "Balogun Market"],
     imageUrl:
-      "https://images.unsplash.com/photo-1648023200358-9dc050df521d?w=600&auto=format&fit=crop&q=60",
+      "https://images.unsplash.com/photo-1648023200358-9dc050df521d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fG5pZ2VyaWF8ZW58MHx8MHx8fDA%3D",
   },
   {
     id: 63,
@@ -1673,7 +1674,7 @@ const destinations = [
       "National Museum of Ethiopia",
     ],
     imageUrl:
-      "https://images.unsplash.com/photo-1634029878815-1bb307302471?w=600&auto=format&fit=crop&q=60",
+      "https://images.unsplash.com/photo-1634029878815-1bb307302471?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZXRoaW9waWF8ZW58MHx8MHx8fDA%3D",
   },
   {
     id: 67,
@@ -1753,7 +1754,7 @@ const destinations = [
       "Walk the old town walls in the evening when the day crowds have left — the medieval towers lit up against the darkening sky make for magical photography.",
     highlights: ["Old Town", "Toompea Castle", "Telliskivi Creative City"],
     imageUrl:
-      "https://images.unsplash.com/photo-1709862366377-54b16f3e51f9?w=600&auto=format&fit=crop&q=60",
+      "https://images.unsplash.com/photo-1709862366377-54b16f3e51f9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZXN0b25pYXxlbnwwfHwwfHx8MA%3D%3D",
   },
   {
     id: 71,
@@ -1776,7 +1777,7 @@ const destinations = [
       "Luxor Temple at Night",
     ],
     imageUrl:
-      "https://images.unsplash.com/photo-1629468855534-450d7c4c5f72?w=600&auto=format&fit=crop&q=60",
+      "https://images.unsplash.com/photo-1629468855534-450d7c4c5f72?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bHV4b3IlMjBlZ3lwdHxlbnwwfHwwfHx8MA%3D%3D",
   },
   {
     id: 72,
@@ -1841,7 +1842,7 @@ const destinations = [
       "Manta Ray Diving",
     ],
     imageUrl:
-      "https://plus.unsplash.com/premium_photo-1671358446946-8bd43ba08a6a?w=600&auto=format&fit=crop&q=60",
+      "https://plus.unsplash.com/premium_photo-1671358446946-8bd43ba08a6a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bW96YW1iaXF1ZXxlbnwwfHwwfHx8MA%3D%3D",
   },
   {
     id: 75,
@@ -1860,7 +1861,7 @@ const destinations = [
       "Walk across Latin Bridge where Archduke Franz Ferdinand was assassinated — then eat at Inat Kuća restaurant opposite for traditional Bosnian food in a historic setting.",
     highlights: ["Baščaršija Bazaar", "Latin Bridge", "Tunnel of Hope Museum"],
     imageUrl:
-      "https://images.unsplash.com/photo-1716968921500-6bce26915c37?w=600&auto=format&fit=crop&q=60",
+      "https://images.unsplash.com/photo-1716968921500-6bce26915c37?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Ym9zbmlhfGVufDB8fDB8fHww",
   },
   {
     id: 76,
@@ -1883,7 +1884,7 @@ const destinations = [
       "Luján de Cuyo Wineries",
     ],
     imageUrl:
-      "https://plus.unsplash.com/premium_photo-1697729859616-de0cceead7d8?w=600&auto=format&fit=crop&q=60",
+      "https://plus.unsplash.com/premium_photo-1697729859616-de0cceead7d8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWVuZG96YSUyMGFyZ2VudGluYXxlbnwwfHwwfHx8MA%3D%3D",
   },
   {
     id: 77,
@@ -1925,7 +1926,7 @@ const destinations = [
       "Ulu Temburong National Park",
     ],
     imageUrl:
-      "https://plus.unsplash.com/premium_photo-1673288455625-fa00f5ff831f?w=600&auto=format&fit=crop&q=60",
+      "https://plus.unsplash.com/premium_photo-1673288455625-fa00f5ff831f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YnJ1bmVpfGVufDB8fDB8fHww",
   },
   {
     id: 79,
@@ -1944,41 +1945,52 @@ const destinations = [
       "Take the Kok-Tobe cable car at sunset and stay for dinner at the summit restaurant — the panoramic view of Almaty with the snow-capped Tian Shan behind it is extraordinary.",
     highlights: ["Big Almaty Lake", "Shymbulak Ski Resort", "Green Bazaar"],
     imageUrl:
-      "https://plus.unsplash.com/premium_photo-1697730150003-26a1d469adb4?w=600&auto=format&fit=crop&q=60",
+      "https://plus.unsplash.com/premium_photo-1697730150003-26a1d469adb4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8a2F6YWtoc3RhbnxlbnwwfHwwfHx8MA%3D%3D",
   },
 ];
 
-// Filter function — mirrors your backend controller logic exactly
-export const fetchRecommendations = () => getRecommendations();
-export const getRecommendations = ({ travelType, budget, region } = {}) => {
-  let results = [...destinations];
+// ── CONTROLLER ──
+const getRecommendations = (req, res) => {
+  try {
+    const { travelType, budget, region } = req.query;
 
-  if (travelType) {
-    results = results.filter(
-      (d) => d.travelType.toLowerCase() === travelType.toLowerCase(),
-    );
-  }
-  if (budget) {
-    results = results.filter(
-      (d) => d.budget.toLowerCase() === budget.toLowerCase(),
-    );
-  }
-  if (region) {
-    results = results.filter(
-      (d) => d.region.toLowerCase() === region.toLowerCase(),
-    );
-  }
+    let results = [...destinations];
 
-  // If filters matched nothing, return everything (same as backend)
-  if (results.length === 0) {
-    results = destinations;
-  }
+    if (travelType) {
+      results = results.filter(
+        (d) => d.travelType.toLowerCase() === travelType.toLowerCase(),
+      );
+    }
 
-  return {
-    success: true,
-    count: results.length,
-    destinations: results,
-  };
+    if (budget) {
+      results = results.filter(
+        (d) => d.budget.toLowerCase() === budget.toLowerCase(),
+      );
+    }
+
+    if (region) {
+      results = results.filter(
+        (d) => d.region.toLowerCase() === region.toLowerCase(),
+      );
+    }
+
+    // If filters matched nothing, return everything
+    if (results.length === 0) {
+      results = destinations;
+    }
+
+    res.status(200).json({
+      success: true,
+      count: results.length,
+      destinations: results,
+    });
+  } catch (err) {
+    console.error("Controller error:", err.message);
+    res.status(500).json({
+      success: false,
+      error: "Failed to fetch recommendations",
+    });
+  }
 };
 
-export default destinations;
+module.exports = { getRecommendations };
