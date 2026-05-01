@@ -24,7 +24,6 @@ export default function App() {
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
-
     if (tab === "tripplan") {
       setDarkMode((prev) => !prev);
     }
@@ -35,7 +34,6 @@ export default function App() {
     setActiveTab("destinations");
   };
 
-  // FIXED TRIP PLAN
   const generateTripPlan = () => {
     if (!selectedDestination) {
       setTripError("Please select a destination first");
@@ -116,32 +114,26 @@ export default function App() {
     document.body.classList.toggle("dark", darkMode);
   }, [darkMode]);
 
-  const loadDestinations = async () => {
+  // ✅ FIXED: synchronous function, no async/await needed
+  const loadDestinations = () => {
     setLoading(true);
     setError("");
     try {
       const data = fetchRecommendations();
-
-      // SAFE FIX (prevents blank page crash)
       setDestinations(data?.destinations || []);
     } catch (err) {
-      setError(
-        "Could not load destinations. Make sure your backend is running.",
-      );
+      setError("Could not load destinations.");
     } finally {
       setLoading(false);
     }
   };
 
-  // ✅ FIXED FILTER (this was your blank page bug)
   const filtered = (destinations || []).filter((d) => {
     const matchType = filter === "all" || d.travelType === filter;
-
     const matchSearch =
       !search ||
       d.name?.toLowerCase().includes(search.toLowerCase()) ||
       d.country?.toLowerCase().includes(search.toLowerCase());
-
     return matchType && matchSearch;
   });
 
@@ -149,7 +141,6 @@ export default function App() {
     <div className="app">
       <ParticleBackground />
 
-      {/* MAP BUTTON */}
       <button
         className="map-fab"
         onClick={() => setShowMap(true)}
@@ -172,7 +163,6 @@ export default function App() {
         setSearch={setSearch}
       />
 
-      {/* HERO */}
       <section className="hero">
         <h1 className="hero-title">
           Find Your Perfect <span>Destination</span>
@@ -182,7 +172,6 @@ export default function App() {
         </p>
       </section>
 
-      {/* FILTER */}
       <section className="filter-section">
         <p className="filter-label">Filter by vibe:</p>
         <div className="filter-buttons">
@@ -205,12 +194,9 @@ export default function App() {
         </div>
       </section>
 
-      {/* MAIN */}
       <main className={`main-content ${darkMode ? "dark" : ""}`}>
         {loading && <p>Loading...</p>}
-
         {error && <p>{error}</p>}
-
         {!loading && !error && filtered.length > 0 && (
           <div className="cards-grid">
             {filtered.map((dest) => (
@@ -218,7 +204,6 @@ export default function App() {
             ))}
           </div>
         )}
-
         {!loading && !error && filtered.length === 0 && (
           <p>No destinations found.</p>
         )}
