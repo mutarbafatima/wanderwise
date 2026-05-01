@@ -9,7 +9,6 @@ export default function Navbar({
 }) {
   const [scrolled, setScrolled] = useState(false);
 
-  // Add shadow to navbar when user scrolls down
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
@@ -30,7 +29,7 @@ export default function Navbar({
 
       {/* RIGHT SIDE */}
       <div className="navbar-right">
-        {/* SEARCH BAR (NEW) */}
+        {/* SEARCH BAR */}
         <input
           type="text"
           placeholder="Search destinations..."
@@ -42,42 +41,30 @@ export default function Navbar({
         {/* Links */}
         <ul className="navbar-links">
           <li>
-            <a
-              href="#"
+            <button
               className={activeTab === "destinations" ? "active" : ""}
-              onClick={(e) => {
-                e.preventDefault();
-                handleTabClick("destinations");
-              }}
+              onClick={() => handleTabClick("destinations")}
             >
               Destination
-            </a>
+            </button>
           </li>
 
           <li>
-            <a
-              href="#"
+            <button
               className={activeTab === "about" ? "active" : ""}
-              onClick={(e) => {
-                e.preventDefault();
-                handleTabClick("about");
-              }}
+              onClick={() => handleTabClick("about")}
             >
               About
-            </a>
+            </button>
           </li>
 
           <li>
-            <a
-              href="#"
+            <button
               className={activeTab === "tripplan" ? "active" : ""}
-              onClick={(e) => {
-                e.preventDefault();
-                handleTabClick("tripplan");
-              }}
+              onClick={() => handleTabClick("tripplan")}
             >
               Trip Plan
-            </a>
+            </button>
           </li>
         </ul>
       </div>
