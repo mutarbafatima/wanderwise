@@ -1949,7 +1949,6 @@ const destinations = [
 ];
 
 // Filter function — mirrors your backend controller logic exactly
-export const fetchRecommendations = () => getRecommendations();
 export const getRecommendations = ({ travelType, budget, region } = {}) => {
   let results = [...destinations];
 
@@ -1969,7 +1968,6 @@ export const getRecommendations = ({ travelType, budget, region } = {}) => {
     );
   }
 
-  // If filters matched nothing, return everything (same as backend)
   if (results.length === 0) {
     results = destinations;
   }
@@ -1981,4 +1979,5 @@ export const getRecommendations = ({ travelType, budget, region } = {}) => {
   };
 };
 
+export const fetchRecommendations = () => getRecommendations();
 export default destinations;
