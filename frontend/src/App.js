@@ -120,7 +120,7 @@ export default function App() {
     setLoading(true);
     setError("");
     try {
-      const data = await fetchRecommendations();
+      const data = fetchRecommendations();
 
       // SAFE FIX (prevents blank page crash)
       setDestinations(data?.destinations || []);
